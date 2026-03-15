@@ -3,19 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>YANZZ STORE</title>
+    <title>YANZZ STORE • RAINBOW MODE</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { height: 100%; overflow: hidden; }
+        html, body { height: 100%; overflow: hidden; background: #0a0c14; }
         body {
-            background: #0a0c14;
             font-family: 'Courier New', monospace;
             position: relative;
             height: 100vh;
             overflow: hidden;
         }
-
-        /* ===== ANIMATED BACKGROUND (SAME FOR BOTH) ===== */
+        
+        @keyframes rainbow {
+            0% { --warna-utama: #ff0000; --warna-rgb: 255, 0, 0; }
+            16% { --warna-utama: #ff7f00; --warna-rgb: 255, 127, 0; }
+            33% { --warna-utama: #ffff00; --warna-rgb: 255, 255, 0; }
+            50% { --warna-utama: #00ff00; --warna-rgb: 0, 255, 0; }
+            66% { --warna-utama: #0000ff; --warna-rgb: 0, 0, 255; }
+            83% { --warna-utama: #4b0082; --warna-rgb: 75, 0, 130; }
+            100% { --warna-utama: #9400d3; --warna-rgb: 148, 0, 211; }
+        }
+        
+        :root {
+            animation: rainbow 10s linear infinite;
+            --warna-utama: #ff0000;
+            --warna-rgb: 255, 0, 0;
+        }
+        
         .bg-animation {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
             overflow: hidden;
@@ -23,8 +37,8 @@
         .stars span {
             position: absolute; display: block; width: 2px; height: 2px;
             background: #ffffff; border-radius: 50%;
-            box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
-            animation: stars 3s linear infinite; opacity: 0.3;
+            box-shadow: 0 0 10px var(--warna-utama), 0 0 20px #ffffff;
+            animation: stars 3s linear infinite; opacity: 0.4;
         }
         @keyframes stars {
             0% { transform: translateY(100vh) scale(1); opacity: 0; }
@@ -33,7 +47,7 @@
         }
         .particles span {
             position: absolute; display: block; width: 4px; height: 4px;
-            background: rgba(255, 255, 255, 0.2); border-radius: 50%;
+            background: rgba(var(--warna-rgb), 0.2); border-radius: 50%;
             animation: float 8s ease-in-out infinite;
         }
         @keyframes float {
@@ -50,7 +64,7 @@
         }
         .orbs span {
             position: absolute; display: block; width: 150px; height: 150px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(var(--warna-rgb), 0.1) 0%, transparent 70%);
             border-radius: 50%; filter: blur(30px);
             animation: orbPulse 8s ease-in-out infinite;
         }
@@ -58,18 +72,17 @@
             0%,100% { opacity: 0.3; transform: scale(1); }
             50% { opacity: 0.6; transform: scale(1.2); }
         }
-
-        /* ===== PAGE LAYOUT: TWO SIDES ===== */
+        
         .main-wrapper {
             position: relative;
             z-index: 20;
             width: 100%;
             height: 100vh;
             display: flex;
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+            transform-style: flat;
+            will-change: transform;
         }
-
-        /* masing2 halaman selebar viewport */
         .page {
             flex: 0 0 100%;
             height: 100%;
@@ -78,22 +91,12 @@
             display: flex;
             flex-direction: column;
             padding: 15px;
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none; /* IE */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
         }
         .page::-webkit-scrollbar { display: none; }
-
-        /* halaman pertama (store) */
-        .page-store {
-            background: transparent;
-        }
-
-        /* halaman kedua (qris) */
-        .page-qris {
-            background: transparent;
-        }
-
-        /* ===== HEADER (SAMA PERTAMA) ===== */
+        .page-store, .page-qris { background: transparent; }
+        
         .header {
             background: transparent; padding: 20px 0 5px; flex-shrink:0; z-index:10;
         }
@@ -103,8 +106,8 @@
         }
         .header-content::before, .header-content::after {
             content:''; position:absolute; left:0; right:0; width:100%; height:2px;
-            background: linear-gradient(90deg, transparent, #ffffff, #ffffff, #ffffff, transparent);
-            box-shadow:0 0 10px #ffffff;
+            background: linear-gradient(90deg, transparent, var(--warna-utama), #ffffff, var(--warna-utama), transparent);
+            box-shadow:0 0 10px var(--warna-utama);
         }
         .header-content::before { top:-15px; }
         .header-content::after { bottom:-10px; }
@@ -116,39 +119,40 @@
         }
         .marquee-content pre {
             color:rgba(255, 255, 255, 0.5); font-size:6.6px; font-weight:bold; line-height:1.2; margin:0;
+            text-shadow: 0 0 4px var(--warna-utama);
         }
         .marquee-content pre.copy { margin-left:15px; }
         @keyframes scrollLeft { 0%{transform:translateX(0);} 100%{transform:translateX(-50%);} }
-
-        /* ===== GLASS CONTAINER (STORE) ===== */
+        
         .glass-container {
-            background: rgba(20, 25, 35, 0.4);
+            background: rgba(10, 15, 25, 0.5);
             backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid var(--warna-utama);
             border-radius: 30px;
             padding: 20px 15px;
             width: 100%;
             max-width: 360px;
             margin: 0 auto;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px var(--warna-utama);
         }
         .model-tag {
             text-align: center; margin-bottom: 15px;
         }
         .model-tag .line {
             display: inline-block; width:22px; height:1px;
-            background: rgba(255, 255, 255, 0.3); margin:0 8px; vertical-align:middle;
+            background: var(--warna-utama); margin:0 8px; vertical-align:middle;
+            box-shadow: 0 0 8px var(--warna-utama);
         }
         .model-tag span {
-            color: rgba(255, 255, 255, 0.8); font-size:12.1px; letter-spacing:2px; text-transform:uppercase;
+            color: rgba(255, 255, 255, 0.9); font-size:12.1px; letter-spacing:2px; text-transform:uppercase;
+            text-shadow: 0 0 5px var(--warna-utama);
         }
-
         .social-buttons {
             display:flex; flex-direction:column; gap:10px; width:100%; align-items:center; margin-bottom:15px;
         }
-        .social-btn, .donate-btn {
-            background: rgba(15,20,30,0.6);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+        .social-btn, .donate-btn, .back-btn {
+            background: rgba(0, 15, 25, 0.7);
+            border: 1px solid var(--warna-utama);
             border-radius: 12px;
             color: #ffffff;
             font-family:'Courier New', monospace;
@@ -158,75 +162,105 @@
             width:100%; max-width:280px;
             text-align:center;
             transition: all 0.3s ease;
-            text-shadow:0 0 8px rgba(255, 255, 255, 0.5);
+            text-shadow:0 0 8px var(--warna-utama);
             letter-spacing:1px;
             cursor:pointer;
             display:inline-block;
             position:relative;
             overflow:hidden;
             backdrop-filter:blur(5px);
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            -webkit-tap-highlight-color: transparent;
+        }
+        .ripple-effect {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--warna-utama);
+            transform: scale(0);
+            animation: ripple-smooth 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            pointer-events: none;
+            z-index: 10;
+            filter: blur(2px);
+            mix-blend-mode: screen;
+            opacity: 0.5;
+        }
+        @keyframes ripple-smooth {
+            0% { transform: scale(0); opacity: 0.6; }
+            50% { opacity: 0.4; }
+            100% { transform: scale(5); opacity: 0; }
         }
         .social-btn::before, .donate-btn::before {
             content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition:left 0.5s;
+            background: linear-gradient(90deg, transparent, var(--warna-utama), transparent);
+            transition:left 0.5s ease;
+            opacity: 0.2;
         }
         .social-btn:hover::before, .donate-btn:hover::before { left:100%; }
         .social-btn:hover, .donate-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.3);
             border-color:#ffffff;
-            box-shadow:0 0 20px rgba(255, 255, 255, 0.3);
-            transform:translateY(-2px);
+            box-shadow:0 0 30px var(--warna-utama);
+            transform:translateY(-3px);
+        }
+        .social-btn:active, .donate-btn:active, .back-btn:active {
+            animation: goyang-smooth 0.2s cubic-bezier(0.25, 0.1, 0.25, 1) 1;
+        }
+        @keyframes goyang-smooth {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-4px) rotate(-1.5deg); }
+            50% { transform: translateX(4px) rotate(1.5deg); }
+            75% { transform: translateX(-2px) rotate(-0.8deg); }
+            100% { transform: translateX(0) rotate(0); }
         }
         .separator {
             display:flex; align-items:center; justify-content:center; gap:10px; margin:15px 0 10px;
         }
-        .separator .line { width:60px; height:1px; background:rgba(255, 255, 255, 0.2); }
-        .separator span { color:rgba(255, 255, 255, 0.6); font-size:11px; letter-spacing:1px; }
-
+        .separator .line { width:60px; height:1px; background:var(--warna-utama); box-shadow:0 0 5px var(--warna-utama); }
+        .separator span { color:rgba(255, 255, 255, 0.8); font-size:11px; letter-spacing:1px; text-shadow:0 0 4px var(--warna-utama); }
         .donate-container { display:flex; justify-content:center; width:100%; margin-bottom:15px; }
-
+        
         .hadith-container {
-            background: rgba(20,25,35,0.6);
-            border:1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 15, 25, 0.7);
+            border:1px solid var(--warna-utama);
             border-radius:15px;
             padding:13px;
             width:100%; max-width:300px; margin:0 auto;
             backdrop-filter:blur(5px);
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
         }
         .hadith-text {
             color: #ffffff; font-size:12.1px; line-height:1.5; text-align:center;
-            font-style:italic; margin-bottom:7px; text-shadow:0 0 5px rgba(255, 255, 255, 0.3);
+            font-style:italic; margin-bottom:7px; text-shadow:0 0 5px var(--warna-utama);
         }
         .hadith-source { color:rgba(255, 255, 255, 0.7); font-size:8.8px; text-align:center; letter-spacing:1px; }
-
-        /* ===== QRIS PAGE (style dari html kedua) ===== */
+        
         .qris-wrapper {
             display: flex; justify-content: center; width: 100%;
         }
         .border-container {
             display: inline-block; padding: 5px;
-            background: rgba(20, 25, 35, 0.4);
+            background: rgba(0, 15, 25, 0.5);
             backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid var(--warna-utama);
             border-radius: 25px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1), 0 0 40px rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 30px var(--warna-utama);
         }
         .qris-image {
             display: block; width: 250px; height: 250px; border-radius: 20px;
             background: white; object-fit: contain;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
         .info-box {
             width: 100%; max-width: 250px;
-            background: rgba(15, 19, 32, 0.8);
+            background: rgba(0, 15, 25, 0.8);
             backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid var(--warna-utama);
             border-radius: 40px;
             padding: 10px 15px;
             position: relative;
             overflow: hidden;
             margin: 10px auto 0;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
         .info-box::before {
             content: '';
@@ -235,7 +269,7 @@
             left: -100%;
             width: 100%;
             height: 1px;
-            background: linear-gradient(90deg, transparent, #ffffff, transparent);
+            background: linear-gradient(90deg, transparent, var(--warna-utama), transparent);
             animation: scan 3s linear infinite;
         }
         @keyframes scan { 0% { left: -100%; } 100% { left: 100%; } }
@@ -245,37 +279,36 @@
         }
         .info-row .label { color: rgba(255, 255, 255, 0.7); font-size: 12px; }
         .info-row .value {
-            font-weight: 700; background: rgba(255, 255, 255, 0.1);
+            font-weight: 700; background: rgba(0, 0, 0, 0.3);
             padding: 4px 12px; border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid var(--warna-utama);
             font-size: 14px;
             color: #ffffff;
+            box-shadow: 0 0 8px var(--warna-utama);
         }
-
         .tutorial-steps {
             width: 100%; display: flex; flex-direction: column; gap: 6px; margin-top: 5px;
         }
         .step {
             display: flex; align-items: center; gap: 8px;
-            background: rgba(15, 19, 32, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(0, 15, 25, 0.6);
+            border: 1px solid var(--warna-utama);
             border-radius: 20px;
             padding: 6px 12px;
             backdrop-filter: blur(5px);
         }
         .step-number {
-            width: 20px; height: 20px; background: #ffffff; color: #0a0c14;
+            width: 20px; height: 20px; background: var(--warna-utama); color: #0a0c14;
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-weight: 800; font-size: 10px; box-shadow: 0 0 10px #ffffff; flex-shrink:0;
+            font-weight: 800; font-size: 10px; box-shadow: 0 0 10px var(--warna-utama); flex-shrink:0;
         }
         .step-text { color: #ffffff; font-size: 11px; font-weight: 500; }
-        .step-text span { color: #ffffff; font-weight: 700; text-shadow:0 0 5px #ffffff; }
+        .step-text span { color: var(--warna-utama); font-weight: 700; text-shadow:0 0 5px var(--warna-utama); }
         .note { text-align: center; color: rgba(255, 255, 255, 0.7); font-size: 9px; margin-top:5px; font-style:italic; }
-
-        /* tombol back khusus di halaman qris */
+        
         .back-btn {
-            background: rgba(15,20,30,0.6);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(0, 15, 25, 0.7);
+            border: 1px solid var(--warna-utama);
             border-radius: 40px;
             color: #ffffff;
             padding: 8px 20px;
@@ -283,40 +316,29 @@
             font-weight: bold;
             cursor: pointer;
             backdrop-filter: blur(5px);
-            transition: 0.3s;
+            transition: all 0.3s ease;
             width: fit-content;
             margin: 15px auto 0;
             text-align: center;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
         }
         .back-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.3);
             border-color: #ffffff;
-            box-shadow: 0 0 15px #ffffff;
-        }
-
-        /* konten tengah halaman qris */
-        .qris-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            flex: 1;
-            gap: 15px;
+            box-shadow: 0 0 25px var(--warna-utama);
+            transform: translateY(-2px);
         }
     </style>
 </head>
 <body>
-    <!-- Animated Background gabungan -->
     <div class="bg-animation">
         <div class="stars" id="stars"></div>
         <div class="particles" id="particles"></div>
         <div class="orbs" id="orbs"></div>
     </div>
     <div class="grid-overlay"></div>
-
-    <!-- Dua halaman digabung dengan sliding effect -->
+    
     <div class="main-wrapper" id="mainWrapper">
-        <!-- HALAMAN 1 : YANZZ STORE (SOCIAL MEDIA) -->
         <div class="page page-store" id="pageStore">
             <header class="header">
                 <div class="header-content">
@@ -348,18 +370,17 @@
                         <span class="line"></span><span>ALL SOSMED</span><span class="line"></span>
                     </div>
                     <div class="social-buttons">
-                        <a href="https://whatsapp.com/channel/0029VbBzZrwAO7RMo9LDRF2M" target="_blank" class="social-btn">SALURAN</a>
-                        <a href="https://instagram.com/yanzysaja" target="_blank" class="social-btn">INSTAGRAM</a>
-                        <a href="https://wa.me/6285166349451" target="_blank" class="social-btn">WA 1</a>
-                        <a href="https://wa.me/6285824800566" target="_blank" class="social-btn">WA 2</a>
-                        <a href="https://t.me/yanzysaja" target="_blank" class="social-btn">TELEGRAM</a>
-                        <a href="https://tiktok.com/@yanzztryxz" target="_blank" class="social-btn">TIKTOK</a>
-                        <a href="https://chat.whatsapp.com/Bq73tqf3tMsBfxPtdwxhGU?mode=gi_t" target="_blank" class="social-btn">GRUP</a>
+                        <a href="https://whatsapp.com/channel/0029VbBzZrwAO7RMo9LDRF2M" target="_blank" class="social-btn" data-ripple>SALURAN</a>
+                        <a href="https://instagram.com/yanzysaja" target="_blank" class="social-btn" data-ripple>INSTAGRAM</a>
+                        <a href="https://wa.me/6285166349451" target="_blank" class="social-btn" data-ripple>WA 1</a>
+                        <a href="https://wa.me/6285824800566" target="_blank" class="social-btn" data-ripple>WA 2</a>
+                        <a href="https://t.me/yanzysaja" target="_blank" class="social-btn" data-ripple>TELEGRAM</a>
+                        <a href="https://tiktok.com/@yanzztryxz" target="_blank" class="social-btn" data-ripple>TIKTOK</a>
+                        <a href="https://chat.whatsapp.com/Bq73tqf3tMsBfxPtdwxhGU?mode=gi_t" target="_blank" class="social-btn" data-ripple>GRUP</a>
                     </div>
                     <div class="separator"><span class="line"></span><span>SUPPORT</span><span class="line"></span></div>
                     <div class="donate-container">
-                        <!-- tombol donasi sekarang geser ke halaman qris -->
-                        <button onclick="slideToDonasi()" class="donate-btn">DONATE</button>
+                        <button onclick="slideToDonasi()" class="donate-btn" data-ripple>DONATE</button>
                     </div>
                     <div class="hadith-container">
                         <div class="hadith-text">"Barang siapa yang mempersulit urusan orang lain, maka Allah akan mempersulitnya di hari kiamat"</div>
@@ -368,8 +389,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- HALAMAN 2 : QRIS (DONASI) -->
         <div class="page page-qris" id="pageQris">
             <div style="flex:1; display:flex; align-items:center; justify-content:center;">
                 <div class="glass-container" style="max-width:360px; margin:auto;">
@@ -393,58 +412,67 @@
                         <div class="step"><div class="step-number">4</div><div class="step-text">Masukkan nominal & <span>konfirmasi</span></div></div>
                         <div class="note">"_" TERIMA KASIH SUDAH DONASI "_"</div>
                     </div>
-                    <!-- tombol balik ke store -->
-                    <button onclick="slideBackToStore()" class="back-btn">← KEMBALI</button>
+                    <button onclick="slideBackToStore()" class="back-btn" data-ripple>← KEMBALI</button>
                 </div>
             </div>
         </div>
     </div>
-
     <script>
-        // stars, particles, orbs (copas dari kedua html)
-        const starsContainer = document.getElementById('stars');
-        for (let i = 0; i < 100; i++) {
-            const span = document.createElement('span');
-            span.style.left = Math.random() * 100 + '%';
-            span.style.animationDelay = Math.random() * 5 + 's';
-            span.style.width = Math.random() * 3 + 1 + 'px';
-            span.style.height = span.style.width;
-            starsContainer.appendChild(span);
-        }
-        const particlesContainer = document.getElementById('particles');
-        for (let i = 0; i < 20; i++) {
-            const span = document.createElement('span');
-            span.style.left = Math.random() * 100 + '%';
-            span.style.top = Math.random() * 100 + '%';
-            span.style.animationDelay = Math.random() * 5 + 's';
-            span.style.animationDuration = (Math.random() * 10 + 5) + 's';
-            span.style.width = Math.random() * 6 + 2 + 'px';
-            span.style.height = span.style.width;
-            particlesContainer.appendChild(span);
-        }
-        const orbsContainer = document.getElementById('orbs');
-        for (let i = 0; i < 3; i++) {
-            const span = document.createElement('span');
-            span.style.left = Math.random() * 100 + '%';
-            span.style.top = Math.random() * 100 + '%';
-            span.style.animationDelay = Math.random() * 5 + 's';
-            span.style.animationDuration = (Math.random() * 10 + 8) + 's';
-            span.style.width = Math.random() * 150 + 80 + 'px';
-            span.style.height = span.style.width;
-            orbsContainer.appendChild(span);
-        }
-
-        // sliding function
-        const wrapper = document.getElementById('mainWrapper');
-        function slideToDonasi() {
-            wrapper.style.transform = 'translateX(-100%)';
-        }
-        function slideBackToStore() {
-            wrapper.style.transform = 'translateX(0)';
-        }
-
-        // jika gambar qris error, pakai fallback (tapi udah ada onerror)
-        // opsional: handle orientation atau resize biar tetap mantap
+        (function() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const span = document.createElement('span');
+                span.style.left = Math.random() * 100 + '%';
+                span.style.animationDelay = Math.random() * 5 + 's';
+                span.style.width = Math.random() * 3 + 1 + 'px';
+                span.style.height = span.style.width;
+                starsContainer.appendChild(span);
+            }
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 20; i++) {
+                const span = document.createElement('span');
+                span.style.left = Math.random() * 100 + '%';
+                span.style.top = Math.random() * 100 + '%';
+                span.style.animationDelay = Math.random() * 5 + 's';
+                span.style.animationDuration = (Math.random() * 10 + 5) + 's';
+                span.style.width = Math.random() * 6 + 2 + 'px';
+                span.style.height = span.style.width;
+                particlesContainer.appendChild(span);
+            }
+            const orbsContainer = document.getElementById('orbs');
+            for (let i = 0; i < 3; i++) {
+                const span = document.createElement('span');
+                span.style.left = Math.random() * 100 + '%';
+                span.style.top = Math.random() * 100 + '%';
+                span.style.animationDelay = Math.random() * 5 + 's';
+                span.style.animationDuration = (Math.random() * 10 + 8) + 's';
+                span.style.width = Math.random() * 150 + 80 + 'px';
+                span.style.height = span.style.width;
+                orbsContainer.appendChild(span);
+            }
+            function createRipple(event) {
+                const button = event.currentTarget;
+                const existingRipple = button.querySelector('.ripple-effect');
+                if (existingRipple) existingRipple.remove();
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple-effect');
+                const rect = button.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height) * 1.5;
+                const x = event.clientX - rect.left - size / 2;
+                const y = event.clientY - rect.top - size / 2;
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                button.appendChild(ripple);
+                setTimeout(() => { if (ripple.parentNode) ripple.remove(); }, 500);
+            }
+            document.querySelectorAll('[data-ripple]').forEach(button => {
+                button.addEventListener('click', createRipple);
+            });
+            const wrapper = document.getElementById('mainWrapper');
+            window.slideToDonasi = function() { wrapper.style.transform = 'translateX(-100%)'; }
+            window.slideBackToStore = function() { wrapper.style.transform = 'translateX(0)'; }
+        })();
     </script>
 </body>
 </html>
