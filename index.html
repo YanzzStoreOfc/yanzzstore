@@ -22,8 +22,8 @@
         }
         .stars span {
             position: absolute; display: block; width: 2px; height: 2px;
-            background: #4aff9e; border-radius: 50%;
-            box-shadow: 0 0 10px #4aff9e, 0 0 20px #4aff9e;
+            background: #ffffff; border-radius: 50%;
+            box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
             animation: stars 3s linear infinite; opacity: 0.3;
         }
         @keyframes stars {
@@ -33,7 +33,7 @@
         }
         .particles span {
             position: absolute; display: block; width: 4px; height: 4px;
-            background: rgba(74, 255, 158, 0.2); border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2); border-radius: 50%;
             animation: float 8s ease-in-out infinite;
         }
         @keyframes float {
@@ -44,13 +44,13 @@
         }
         .grid-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(rgba(74, 255, 158, 0.03) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(74, 255, 158, 0.03) 1px, transparent 1px);
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             background-size: 50px 50px; pointer-events: none; z-index: 1;
         }
         .orbs span {
             position: absolute; display: block; width: 150px; height: 150px;
-            background: radial-gradient(circle, rgba(74, 255, 158, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
             border-radius: 50%; filter: blur(30px);
             animation: orbPulse 8s ease-in-out infinite;
         }
@@ -103,8 +103,8 @@
         }
         .header-content::before, .header-content::after {
             content:''; position:absolute; left:0; right:0; width:100%; height:2px;
-            background: linear-gradient(90deg, transparent, #4aff9e, #4aff9e, #4aff9e, transparent);
-            box-shadow:0 0 10px #4aff9e;
+            background: linear-gradient(90deg, transparent, #ffffff, #ffffff, #ffffff, transparent);
+            box-shadow:0 0 10px #ffffff;
         }
         .header-content::before { top:-15px; }
         .header-content::after { bottom:-10px; }
@@ -115,7 +115,7 @@
             display:flex; animation:scrollLeft 25s linear infinite; white-space:nowrap;
         }
         .marquee-content pre {
-            color:rgba(74,255,158,0.5); font-size:6.6px; font-weight:bold; line-height:1.2; margin:0;
+            color:rgba(255, 255, 255, 0.5); font-size:6.6px; font-weight:bold; line-height:1.2; margin:0;
         }
         .marquee-content pre.copy { margin-left:15px; }
         @keyframes scrollLeft { 0%{transform:translateX(0);} 100%{transform:translateX(-50%);} }
@@ -124,7 +124,7 @@
         .glass-container {
             background: rgba(20, 25, 35, 0.4);
             backdrop-filter: blur(15px);
-            border: 1px solid rgba(74, 255, 158, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 30px;
             padding: 20px 15px;
             width: 100%;
@@ -137,10 +137,10 @@
         }
         .model-tag .line {
             display: inline-block; width:22px; height:1px;
-            background: rgba(74, 255, 158, 0.3); margin:0 8px; vertical-align:middle;
+            background: rgba(255, 255, 255, 0.3); margin:0 8px; vertical-align:middle;
         }
         .model-tag span {
-            color: rgba(74,255,158,0.6); font-size:12.1px; letter-spacing:2px; text-transform:uppercase;
+            color: rgba(255, 255, 255, 0.8); font-size:12.1px; letter-spacing:2px; text-transform:uppercase;
         }
 
         .social-buttons {
@@ -148,9 +148,9 @@
         }
         .social-btn, .donate-btn {
             background: rgba(15,20,30,0.6);
-            border: 1px solid rgba(74,255,158,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 12px;
-            color: #4aff9e;
+            color: #ffffff;
             font-family:'Courier New', monospace;
             font-size:15.4px; font-weight:bold;
             padding:13px 18px;
@@ -158,7 +158,7 @@
             width:100%; max-width:280px;
             text-align:center;
             transition: all 0.3s ease;
-            text-shadow:0 0 8px rgba(74,255,158,0.5);
+            text-shadow:0 0 8px rgba(255, 255, 255, 0.5);
             letter-spacing:1px;
             cursor:pointer;
             display:inline-block;
@@ -168,37 +168,37 @@
         }
         .social-btn::before, .donate-btn::before {
             content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
-            background: linear-gradient(90deg, transparent, rgba(74,255,158,0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition:left 0.5s;
         }
         .social-btn:hover::before, .donate-btn:hover::before { left:100%; }
         .social-btn:hover, .donate-btn:hover {
-            background: rgba(74,255,158,0.1);
-            border-color:#4aff9e;
-            box-shadow:0 0 20px rgba(74,255,158,0.3);
+            background: rgba(255, 255, 255, 0.1);
+            border-color:#ffffff;
+            box-shadow:0 0 20px rgba(255, 255, 255, 0.3);
             transform:translateY(-2px);
         }
         .separator {
             display:flex; align-items:center; justify-content:center; gap:10px; margin:15px 0 10px;
         }
-        .separator .line { width:60px; height:1px; background:rgba(74,255,158,0.2); }
-        .separator span { color:rgba(74,255,158,0.4); font-size:11px; letter-spacing:1px; }
+        .separator .line { width:60px; height:1px; background:rgba(255, 255, 255, 0.2); }
+        .separator span { color:rgba(255, 255, 255, 0.6); font-size:11px; letter-spacing:1px; }
 
         .donate-container { display:flex; justify-content:center; width:100%; margin-bottom:15px; }
 
         .hadith-container {
             background: rgba(20,25,35,0.6);
-            border:1px solid rgba(74,255,158,0.2);
+            border:1px solid rgba(255, 255, 255, 0.2);
             border-radius:15px;
             padding:13px;
             width:100%; max-width:300px; margin:0 auto;
             backdrop-filter:blur(5px);
         }
         .hadith-text {
-            color: rgba(74,255,158,0.9); font-size:12.1px; line-height:1.5; text-align:center;
-            font-style:italic; margin-bottom:7px; text-shadow:0 0 5px rgba(74,255,158,0.3);
+            color: #ffffff; font-size:12.1px; line-height:1.5; text-align:center;
+            font-style:italic; margin-bottom:7px; text-shadow:0 0 5px rgba(255, 255, 255, 0.3);
         }
-        .hadith-source { color:rgba(74,255,158,0.5); font-size:8.8px; text-align:center; letter-spacing:1px; }
+        .hadith-source { color:rgba(255, 255, 255, 0.7); font-size:8.8px; text-align:center; letter-spacing:1px; }
 
         /* ===== QRIS PAGE (style dari html kedua) ===== */
         .qris-wrapper {
@@ -208,9 +208,9 @@
             display: inline-block; padding: 5px;
             background: rgba(20, 25, 35, 0.4);
             backdrop-filter: blur(15px);
-            border: 1px solid rgba(74, 255, 158, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 25px;
-            box-shadow: 0 0 20px rgba(74,255,158,0.1), 0 0 40px rgba(74,255,158,0.05);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1), 0 0 40px rgba(255, 255, 255, 0.05);
         }
         .qris-image {
             display: block; width: 250px; height: 250px; border-radius: 20px;
@@ -221,7 +221,7 @@
             width: 100%; max-width: 250px;
             background: rgba(15, 19, 32, 0.8);
             backdrop-filter: blur(5px);
-            border: 1px solid rgba(74, 255, 158, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 40px;
             padding: 10px 15px;
             position: relative;
@@ -235,20 +235,21 @@
             left: -100%;
             width: 100%;
             height: 1px;
-            background: linear-gradient(90deg, transparent, #4aff9e, transparent);
+            background: linear-gradient(90deg, transparent, #ffffff, transparent);
             animation: scan 3s linear infinite;
         }
         @keyframes scan { 0% { left: -100%; } 100% { left: 100%; } }
         .info-row {
             display: flex; align-items: center; justify-content: center; gap: 8px;
-            color: #4aff9e; font-size: 14px;
+            color: #ffffff; font-size: 14px;
         }
-        .info-row .label { color: rgba(74, 255, 158, 0.6); font-size: 12px; }
+        .info-row .label { color: rgba(255, 255, 255, 0.7); font-size: 12px; }
         .info-row .value {
-            font-weight: 700; background: rgba(74, 255, 158, 0.1);
+            font-weight: 700; background: rgba(255, 255, 255, 0.1);
             padding: 4px 12px; border-radius: 30px;
-            border: 1px solid rgba(74, 255, 158, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             font-size: 14px;
+            color: #ffffff;
         }
 
         .tutorial-steps {
@@ -257,26 +258,26 @@
         .step {
             display: flex; align-items: center; gap: 8px;
             background: rgba(15, 19, 32, 0.5);
-            border: 1px solid rgba(74, 255, 158, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 20px;
             padding: 6px 12px;
             backdrop-filter: blur(5px);
         }
         .step-number {
-            width: 20px; height: 20px; background: #4aff9e; color: #0a0c14;
+            width: 20px; height: 20px; background: #ffffff; color: #0a0c14;
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-weight: 800; font-size: 10px; box-shadow: 0 0 10px #4aff9e; flex-shrink:0;
+            font-weight: 800; font-size: 10px; box-shadow: 0 0 10px #ffffff; flex-shrink:0;
         }
-        .step-text { color: rgba(255,255,255,0.9); font-size: 11px; font-weight: 500; }
-        .step-text span { color: #4aff9e; font-weight: 700; text-shadow:0 0 5px #4aff9e; }
-        .note { text-align: center; color: rgba(74,255,158,0.5); font-size: 9px; margin-top:5px; font-style:italic; }
+        .step-text { color: #ffffff; font-size: 11px; font-weight: 500; }
+        .step-text span { color: #ffffff; font-weight: 700; text-shadow:0 0 5px #ffffff; }
+        .note { text-align: center; color: rgba(255, 255, 255, 0.7); font-size: 9px; margin-top:5px; font-style:italic; }
 
         /* tombol back khusus di halaman qris */
         .back-btn {
             background: rgba(15,20,30,0.6);
-            border: 1px solid rgba(74,255,158,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 40px;
-            color: #4aff9e;
+            color: #ffffff;
             padding: 8px 20px;
             font-size: 14px;
             font-weight: bold;
@@ -288,9 +289,9 @@
             text-align: center;
         }
         .back-btn:hover {
-            background: rgba(74,255,158,0.2);
-            border-color: #4aff9e;
-            box-shadow: 0 0 15px #4aff9e;
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #ffffff;
+            box-shadow: 0 0 15px #ffffff;
         }
 
         /* konten tengah halaman qris */
