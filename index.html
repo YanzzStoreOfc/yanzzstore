@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>YANZZ STORE • RAINBOW MODE</title>
+    <title>YANZZ STORE • QRIS INSTANT</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { height: 100%; overflow: hidden; background: #0a0c14; }
@@ -13,23 +13,6 @@
             height: 100vh;
             overflow: hidden;
         }
-        
-        @keyframes rainbow {
-            0% { --warna-utama: #ff0000; --warna-rgb: 255, 0, 0; }
-            16% { --warna-utama: #ff7f00; --warna-rgb: 255, 127, 0; }
-            33% { --warna-utama: #ffff00; --warna-rgb: 255, 255, 0; }
-            50% { --warna-utama: #00ff00; --warna-rgb: 0, 255, 0; }
-            66% { --warna-utama: #0000ff; --warna-rgb: 0, 0, 255; }
-            83% { --warna-utama: #4b0082; --warna-rgb: 75, 0, 130; }
-            100% { --warna-utama: #9400d3; --warna-rgb: 148, 0, 211; }
-        }
-        
-        :root {
-            animation: rainbow 10s linear infinite;
-            --warna-utama: #ff0000;
-            --warna-rgb: 255, 0, 0;
-        }
-        
         .bg-animation {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
             overflow: hidden;
@@ -37,7 +20,7 @@
         .stars span {
             position: absolute; display: block; width: 2px; height: 2px;
             background: #ffffff; border-radius: 50%;
-            box-shadow: 0 0 10px var(--warna-utama), 0 0 20px #ffffff;
+            box-shadow: 0 0 10px #00ffff, 0 0 20px #ffffff;
             animation: stars 3s linear infinite; opacity: 0.4;
         }
         @keyframes stars {
@@ -47,7 +30,7 @@
         }
         .particles span {
             position: absolute; display: block; width: 4px; height: 4px;
-            background: rgba(var(--warna-rgb), 0.2); border-radius: 50%;
+            background: rgba(0, 255, 255, 0.2); border-radius: 50%;
             animation: float 8s ease-in-out infinite;
         }
         @keyframes float {
@@ -64,7 +47,7 @@
         }
         .orbs span {
             position: absolute; display: block; width: 150px; height: 150px;
-            background: radial-gradient(circle, rgba(var(--warna-rgb), 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
             border-radius: 50%; filter: blur(30px);
             animation: orbPulse 8s ease-in-out infinite;
         }
@@ -72,7 +55,6 @@
             0%,100% { opacity: 0.3; transform: scale(1); }
             50% { opacity: 0.6; transform: scale(1.2); }
         }
-        
         .main-wrapper {
             position: relative;
             z-index: 20;
@@ -96,7 +78,6 @@
         }
         .page::-webkit-scrollbar { display: none; }
         .page-store, .page-qris { background: transparent; }
-        
         .header {
             background: transparent; padding: 20px 0 5px; flex-shrink:0; z-index:10;
         }
@@ -106,8 +87,8 @@
         }
         .header-content::before, .header-content::after {
             content:''; position:absolute; left:0; right:0; width:100%; height:2px;
-            background: linear-gradient(90deg, transparent, var(--warna-utama), #ffffff, var(--warna-utama), transparent);
-            box-shadow:0 0 10px var(--warna-utama);
+            background: linear-gradient(90deg, transparent, #00ffff, #ffffff, #00ffff, transparent);
+            box-shadow:0 0 10px #00ffff;
         }
         .header-content::before { top:-15px; }
         .header-content::after { bottom:-10px; }
@@ -119,40 +100,39 @@
         }
         .marquee-content pre {
             color:rgba(255, 255, 255, 0.5); font-size:6.6px; font-weight:bold; line-height:1.2; margin:0;
-            text-shadow: 0 0 4px var(--warna-utama);
+            text-shadow: 0 0 4px cyan;
         }
         .marquee-content pre.copy { margin-left:15px; }
         @keyframes scrollLeft { 0%{transform:translateX(0);} 100%{transform:translateX(-50%);} }
-        
         .glass-container {
             background: rgba(10, 15, 25, 0.5);
             backdrop-filter: blur(15px);
-            border: 1px solid var(--warna-utama);
+            border: 1px solid rgba(0, 255, 255, 0.3);
             border-radius: 30px;
             padding: 20px 15px;
             width: 100%;
             max-width: 360px;
             margin: 0 auto;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px var(--warna-utama);
+            box-shadow: 0 15px 35px rgba(0,255,255,0.2), 0 0 20px rgba(0,255,255,0.3);
         }
         .model-tag {
             text-align: center; margin-bottom: 15px;
         }
         .model-tag .line {
             display: inline-block; width:22px; height:1px;
-            background: var(--warna-utama); margin:0 8px; vertical-align:middle;
-            box-shadow: 0 0 8px var(--warna-utama);
+            background: rgba(0, 255, 255, 0.5); margin:0 8px; vertical-align:middle;
+            box-shadow: 0 0 8px cyan;
         }
         .model-tag span {
             color: rgba(255, 255, 255, 0.9); font-size:12.1px; letter-spacing:2px; text-transform:uppercase;
-            text-shadow: 0 0 5px var(--warna-utama);
+            text-shadow: 0 0 5px cyan;
         }
         .social-buttons {
             display:flex; flex-direction:column; gap:10px; width:100%; align-items:center; margin-bottom:15px;
         }
         .social-btn, .donate-btn, .back-btn {
             background: rgba(0, 15, 25, 0.7);
-            border: 1px solid var(--warna-utama);
+            border: 1px solid rgba(0, 255, 255, 0.5);
             border-radius: 12px;
             color: #ffffff;
             font-family:'Courier New', monospace;
@@ -162,27 +142,26 @@
             width:100%; max-width:280px;
             text-align:center;
             transition: all 0.3s ease;
-            text-shadow:0 0 8px var(--warna-utama);
+            text-shadow:0 0 8px cyan;
             letter-spacing:1px;
             cursor:pointer;
             display:inline-block;
             position:relative;
             overflow:hidden;
             backdrop-filter:blur(5px);
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            box-shadow: 0 0 10px rgba(0,255,255,0.2);
             -webkit-tap-highlight-color: transparent;
         }
         .ripple-effect {
             position: absolute;
             border-radius: 50%;
-            background: var(--warna-utama);
+            background: rgba(0, 255, 255, 0.5);
             transform: scale(0);
             animation: ripple-smooth 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
             pointer-events: none;
             z-index: 10;
             filter: blur(2px);
             mix-blend-mode: screen;
-            opacity: 0.5;
         }
         @keyframes ripple-smooth {
             0% { transform: scale(0); opacity: 0.6; }
@@ -191,15 +170,14 @@
         }
         .social-btn::before, .donate-btn::before {
             content:''; position:absolute; top:0; left:-100%; width:100%; height:100%;
-            background: linear-gradient(90deg, transparent, var(--warna-utama), transparent);
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
             transition:left 0.5s ease;
-            opacity: 0.2;
         }
         .social-btn:hover::before, .donate-btn:hover::before { left:100%; }
         .social-btn:hover, .donate-btn:hover {
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 255, 255, 0.1);
             border-color:#ffffff;
-            box-shadow:0 0 30px var(--warna-utama);
+            box-shadow:0 0 30px cyan;
             transform:translateY(-3px);
         }
         .social-btn:active, .donate-btn:active, .back-btn:active {
@@ -215,25 +193,23 @@
         .separator {
             display:flex; align-items:center; justify-content:center; gap:10px; margin:15px 0 10px;
         }
-        .separator .line { width:60px; height:1px; background:var(--warna-utama); box-shadow:0 0 5px var(--warna-utama); }
-        .separator span { color:rgba(255, 255, 255, 0.8); font-size:11px; letter-spacing:1px; text-shadow:0 0 4px var(--warna-utama); }
+        .separator .line { width:60px; height:1px; background:rgba(0, 255, 255, 0.4); box-shadow:0 0 5px cyan; }
+        .separator span { color:rgba(255, 255, 255, 0.8); font-size:11px; letter-spacing:1px; text-shadow:0 0 4px cyan; }
         .donate-container { display:flex; justify-content:center; width:100%; margin-bottom:15px; }
-        
         .hadith-container {
             background: rgba(0, 15, 25, 0.7);
-            border:1px solid var(--warna-utama);
+            border:1px solid rgba(0, 255, 255, 0.3);
             border-radius:15px;
             padding:13px;
             width:100%; max-width:300px; margin:0 auto;
             backdrop-filter:blur(5px);
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            box-shadow: 0 0 15px rgba(0,255,255,0.2);
         }
         .hadith-text {
             color: #ffffff; font-size:12.1px; line-height:1.5; text-align:center;
-            font-style:italic; margin-bottom:7px; text-shadow:0 0 5px var(--warna-utama);
+            font-style:italic; margin-bottom:7px; text-shadow:0 0 5px cyan;
         }
         .hadith-source { color:rgba(255, 255, 255, 0.7); font-size:8.8px; text-align:center; letter-spacing:1px; }
-        
         .qris-wrapper {
             display: flex; justify-content: center; width: 100%;
         }
@@ -241,26 +217,26 @@
             display: inline-block; padding: 5px;
             background: rgba(0, 15, 25, 0.5);
             backdrop-filter: blur(15px);
-            border: 1px solid var(--warna-utama);
+            border: 1px solid rgba(0, 255, 255, 0.5);
             border-radius: 25px;
-            box-shadow: 0 0 30px var(--warna-utama);
+            box-shadow: 0 0 30px rgba(0,255,255,0.3);
         }
         .qris-image {
             display: block; width: 250px; height: 250px; border-radius: 20px;
             background: white; object-fit: contain;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            box-shadow: 0 5px 15px rgba(0,255,255,0.3);
         }
         .info-box {
             width: 100%; max-width: 250px;
             background: rgba(0, 15, 25, 0.8);
             backdrop-filter: blur(5px);
-            border: 1px solid var(--warna-utama);
+            border: 1px solid rgba(0, 255, 255, 0.5);
             border-radius: 40px;
             padding: 10px 15px;
             position: relative;
             overflow: hidden;
             margin: 10px auto 0;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            box-shadow: 0 0 20px rgba(0,255,255,0.2);
         }
         .info-box::before {
             content: '';
@@ -269,7 +245,7 @@
             left: -100%;
             width: 100%;
             height: 1px;
-            background: linear-gradient(90deg, transparent, var(--warna-utama), transparent);
+            background: linear-gradient(90deg, transparent, cyan, transparent);
             animation: scan 3s linear infinite;
         }
         @keyframes scan { 0% { left: -100%; } 100% { left: 100%; } }
@@ -279,12 +255,12 @@
         }
         .info-row .label { color: rgba(255, 255, 255, 0.7); font-size: 12px; }
         .info-row .value {
-            font-weight: 700; background: rgba(0, 0, 0, 0.3);
+            font-weight: 700; background: rgba(0, 255, 255, 0.1);
             padding: 4px 12px; border-radius: 30px;
-            border: 1px solid var(--warna-utama);
+            border: 1px solid cyan;
             font-size: 14px;
             color: #ffffff;
-            box-shadow: 0 0 8px var(--warna-utama);
+            box-shadow: 0 0 8px cyan;
         }
         .tutorial-steps {
             width: 100%; display: flex; flex-direction: column; gap: 6px; margin-top: 5px;
@@ -292,23 +268,22 @@
         .step {
             display: flex; align-items: center; gap: 8px;
             background: rgba(0, 15, 25, 0.6);
-            border: 1px solid var(--warna-utama);
+            border: 1px solid rgba(0, 255, 255, 0.3);
             border-radius: 20px;
             padding: 6px 12px;
             backdrop-filter: blur(5px);
         }
         .step-number {
-            width: 20px; height: 20px; background: var(--warna-utama); color: #0a0c14;
+            width: 20px; height: 20px; background: cyan; color: #0a0c14;
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-weight: 800; font-size: 10px; box-shadow: 0 0 10px var(--warna-utama); flex-shrink:0;
+            font-weight: 800; font-size: 10px; box-shadow: 0 0 10px cyan; flex-shrink:0;
         }
         .step-text { color: #ffffff; font-size: 11px; font-weight: 500; }
-        .step-text span { color: var(--warna-utama); font-weight: 700; text-shadow:0 0 5px var(--warna-utama); }
+        .step-text span { color: cyan; font-weight: 700; text-shadow:0 0 5px cyan; }
         .note { text-align: center; color: rgba(255, 255, 255, 0.7); font-size: 9px; margin-top:5px; font-style:italic; }
-        
         .back-btn {
             background: rgba(0, 15, 25, 0.7);
-            border: 1px solid var(--warna-utama);
+            border: 1px solid cyan;
             border-radius: 40px;
             color: #ffffff;
             padding: 8px 20px;
@@ -320,12 +295,12 @@
             width: fit-content;
             margin: 15px auto 0;
             text-align: center;
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            box-shadow: 0 0 15px rgba(0,255,255,0.2);
         }
         .back-btn:hover {
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 255, 255, 0.2);
             border-color: #ffffff;
-            box-shadow: 0 0 25px var(--warna-utama);
+            box-shadow: 0 0 25px cyan;
             transform: translateY(-2px);
         }
     </style>
@@ -337,7 +312,6 @@
         <div class="orbs" id="orbs"></div>
     </div>
     <div class="grid-overlay"></div>
-    
     <div class="main-wrapper" id="mainWrapper">
         <div class="page page-store" id="pageStore">
             <header class="header">
